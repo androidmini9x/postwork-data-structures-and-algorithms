@@ -1,5 +1,25 @@
 function romanNumeral(string) {
-  // type your code here
+  const ROM = {
+    'I': 1,
+    'V': 5,
+    'X': 10,
+    'L': 50,
+    'C': 100,
+    'D': 500,
+    'M': 1000
+  };
+  let count = 0;
+  let ptr = string[string.length - 1];
+  for (let i = string.length - 1; i >= 0; i--) {
+    const idx = string[i];
+    if (ROM[idx] < ROM[ptr]) {
+      count -= ROM[idx];
+    } else {
+      count += ROM[idx];
+    }
+    ptr = idx;
+  }
+  return count;
 }
 
 if (require.main === module) {
